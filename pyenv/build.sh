@@ -11,4 +11,4 @@ pyenv global $version
 pyenv rehash
 
 pip install --upgrade pip
-pip3 install pipenv # pipfileに記載されたmoduleのインストール
+pip3 install pipenv # pipenvコマンドはversionごとにインストールする
