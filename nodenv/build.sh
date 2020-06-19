@@ -2,6 +2,14 @@
 
 version=$1
 
+# 特にバージョン指定がなければ推奨版をインストールする
+if [[ -z "$version" ]]; then
+    # 最新 = 推奨版かどうかは怪しい
+    version=$(curl https://api.github.com/repos/nodejs/node/releases/latest | jq -r .tag_name | sed -e 's/v//')
+fi
+
+echo "$version will be installed."
+
 # nodeのインストールと一緒にnpmもついてくる
 nodenv install $version
 
