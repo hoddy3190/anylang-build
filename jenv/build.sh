@@ -1,4 +1,4 @@
-#!/bin/usr/env bash -eu
+#!/usr/bin/env bash -eu
 
 # ディストリビューションごとのバージョンの検索コマンド
 # sdk list java
