@@ -1,4 +1,8 @@
-#!/usr/bin/env bash -eu
+#!/usr/bin/env bash -l
+
+# sdkコマンドは実行可能ファイルではなく関数であり（try: type sdk）、これを使うためには、
+# sdkmanセットアップ時に.bash_profileに記載されたコードを読み込む必要があるため
+# bashに-lオプションが必要
 
 # ディストリビューションごとのバージョンの検索コマンド: sdk list java
 # 引数でバージョンを指定しない場合は最新安定版をインストールする
