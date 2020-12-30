@@ -1,8 +1,8 @@
 #!/usr/bin/env bash -eu
 
-# ディストリビューションごとのバージョンの検索コマンド
-# sdk list java
-version=$1
+# ディストリビューションごとのバージョンの検索コマンド: sdk list java
+# 引数でバージョンを指定しない場合は最新安定版をインストールする
+version=${1:-''}
 
 # SDKMANで最新安定版のJavaをインストール
 # 最新安定版の取得は、SDKMANの中で下のURLをたたいている
