@@ -1,6 +1,7 @@
 #!/usr/bin/env bash -eu
 
-version=$1
+# インストール可能なバージョンリストを更新
+anyenv update nodenv
 
 # 特にバージョン指定がなければ推奨版をインストールする
 if [[ -z "$version" ]]; then
