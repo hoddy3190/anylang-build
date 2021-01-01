@@ -3,10 +3,25 @@
 # インストール可能なバージョンリストを更新
 anyenv update nodenv
 
+version=${1:-''}
+
 # 特にバージョン指定がなければ推奨版をインストールする
 if [[ -z "$version" ]]; then
-    # 最新 = 推奨版かどうかは怪しい
-    version=$(curl https://api.github.com/repos/nodejs/node/releases/latest | jq -r .tag_name | sed -e 's/v//')
+    lts_version=$(
+        curl -s https://nodejs.org/en/download/ |\
+        grep 'Latest LTS Version:' |\
+        perl -anle "print \$1 if (\$_ =~ /\<strong\>(.*)\<\/strong\>/)"
+    )
+    # スクレイピングに近いことをやってltsを取得しているので安定しないはず
+    # 取得できなくなったらエラーで落として、コード修正を促す
+    if [[ -z "$lts_version" ]]; then
+        echo "cannot get lts version name, fix scraping codes"
+        exit 1
+    fi
+    version=$lts_version
+
+    # 最新版取得コマンド
+    # latest_version=$(curl https://api.github.com/repos/nodejs/node/releases/latest | jq -r .tag_name | sed -e 's/v//')
 fi
 
 echo "$version will be installed."
