@@ -43,3 +43,6 @@ nodenv global $version
 # 12.18.1でrehashしても12.14.1でインストールしたtextlintは残る
 # nodeやnpmは12.14.1でもあるがrehashすることにより12.18.1のものに差し替わる
 nodenv rehash
+
+# 初めてnodenvでnodeをインストールした後、npm i -gしたパッケージへのパスが通っていなかった
+exec $SHELL -l
