@@ -1,6 +1,29 @@
-#!/usr/bin/env bash -eu
+#!/bin/bash
 
-version=$1
+set -euo pipefail
+
+version=${1:-''}
+
+# 特にバージョン指定がなければ最新版をインストールする
+if [[ -z "$version" ]]; then
+    # .pkg or .tar.xz or .exe があるのでmacosxで絞る
+    latest_version=$(
+        curl -s https://www.python.org/downloads/ |\
+        grep -e 'macosx' |\
+        grep -e 'Download Python' |\
+        perl -anle "print \$1 if (\$_ =~ /Download Python (.*)\<\/a\>/)"
+    )
+    # スクレイピングに近いことをやってltsを取得しているので安定しないはず
+    # 取得できなくなったらエラーで落として、コード修正を促す
+    if [[ -z "$latest_version" ]]; then
+        echo "cannot get latest version name, fix scraping codes"
+        exit 1
+    fi
+
+    version=$latest_version
+fi
+
+echo "$version will be installed."
 
 pyenv install $version
 
