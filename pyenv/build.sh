@@ -2,6 +2,10 @@
 
 set -euo pipefail
 
+# インストール可能なバージョンリストを更新
+# mafifestの最新化を行って、"definition not found"が起きないようにする
+anyenv update pyenv
+
 version=${1:-''}
 
 # 特にバージョン指定がなければ最新版をインストールする

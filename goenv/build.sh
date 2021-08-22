@@ -2,6 +2,9 @@
 
 version=$1
 
+# インストール可能なバージョンリストを更新
+anyenv update goenv
+
 goenv install $version
 
 # $GOENV_ROOT/versionというファイルが作成/更新される

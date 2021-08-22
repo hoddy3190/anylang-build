@@ -2,6 +2,9 @@
 
 version=$1
 
+# インストール可能なバージョンリストを更新
+anyenv update rbenv
+
 rbenv install $version
 
 rbenv global $version

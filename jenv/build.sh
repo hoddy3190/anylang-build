@@ -8,6 +8,9 @@
 # ここでsetする
 set -eu
 
+# インストール可能なバージョンリストを更新
+anyenv update jenv
+
 sdk_wrapper () {
     # sdkコマンド（関数）は、set -uの状態だとエラーになるので一時的に-uを外す
     set +u
