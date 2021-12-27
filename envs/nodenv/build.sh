@@ -7,11 +7,14 @@ version=${1:-''}
 
 # 特にバージョン指定がなければ推奨版をインストールする
 if [[ -z "$version" ]]; then
+    # 途中のgrepで落ちないように+eしておく
+    set +e
     lts_version=$(
         curl -s https://nodejs.org/en/download/ |\
         grep 'Latest LTS Version:' |\
         perl -anle "print \$1 if (\$_ =~ /\<strong\>(.*)\<\/strong\>/)"
     )
+    set -e
     # スクレイピングに近いことをやってltsを取得しているので安定しないはず
     # 取得できなくなったらエラーで落として、コード修正を促す
     if [[ -z "$lts_version" ]]; then
