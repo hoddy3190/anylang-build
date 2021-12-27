@@ -10,13 +10,15 @@ version=${1:-''}
 
 # 特にバージョン指定がなければ最新版をインストールする
 if [[ -z "$version" ]]; then
+    # 途中のgrepで落ちないように+eしておく
+    set +e
     # .pkg or .tar.xz or .exe があるのでmacosxで絞る
     latest_version=$(
-        curl -s https://www.python.org/downloads/ |\
-        grep -e 'macosx' |\
-        grep -e 'Download Python' |\
-        perl -anle "print \$1 if (\$_ =~ /Download Python (.*)\<\/a\>/)"
+        curl -s https://www.python.org/downloads/macos/ |\
+        grep -e 'Latest Python 3 Release' |\
+        perl -anle "print \$1 if (\$_ =~ /Latest Python 3 Release \- Python (.*)\<\/a\>/)"
     )
+    set -e
     # スクレイピングに近いことをやってltsを取得しているので安定しないはず
     # 取得できなくなったらエラーで落として、コード修正を促す
     if [[ -z "$latest_version" ]]; then
