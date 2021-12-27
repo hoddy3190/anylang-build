@@ -5,20 +5,15 @@ set -euo pipefail
 lang="$1"
 ver=${2:-''}
 
-SCRIPT_DIR=$(cd $(dirname "$0"); pwd)
-
-# brewで使うとき、シムリンクから呼ばれるので、そこをふまえてBASE_DIRを取得する
-set +e # symlinkでなかったときにエラーになるので+eしておく
-SYM=$(readlink "$0")
-set -e
-
-BASE_DIR="${SCRIPT_DIR}/${SYM}"
+# brewで使うとき、シムリンクから呼ばれるので、リンク先のディレクトリを取得する
+# $0がシムリンクでないときはそのdirnameがSCRIPT_DIRに入る
+SCRIPT_DIR=$(dirname $(perl -MCwd -e 'print Cwd::abs_path shift' "$0"))
 
 case "$lang" in
-    "go"   ) "$BASE_DIR"/envs/"$lang"env/build.sh "$ver" ;;
-    "j"    ) "$BASE_DIR"/envs/"$lang"env/build.sh "$ver" ;;
-    "node" ) "$BASE_DIR"/envs/"$lang"nv/build.sh "$ver" ;;
-    "py"   ) "$BASE_DIR"/envs/"$lang"env/build.sh "$ver" ;;
-    "rb"   ) "$BASE_DIR"/envs/"$lang"env/build.sh "$ver" ;;
+    "go"   ) "$SCRIPT_DIR"/envs/"$lang"env/build.sh "$ver" ;;
+    "j"    ) "$SCRIPT_DIR"/envs/"$lang"env/build.sh "$ver" ;;
+    "node" ) "$SCRIPT_DIR"/envs/"$lang"nv/build.sh "$ver" ;;
+    "py"   ) "$SCRIPT_DIR"/envs/"$lang"env/build.sh "$ver" ;;
+    "rb"   ) "$SCRIPT_DIR"/envs/"$lang"env/build.sh "$ver" ;;
     *      ) echo "$lang は対応していない言語です"; exit 1 ;;
 esac
