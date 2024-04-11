@@ -10,9 +10,9 @@ if [[ -z "$version" ]]; then
     # 途中のgrepで落ちないように+eしておく
     set +e
     lts_version=$(
-        curl -s https://nodejs.org/en/download/ |\
-        grep 'Latest LTS Version:' |\
-        perl -anle "print \$1 if (\$_ =~ /\<strong\>(.*)\<\/strong\>/)"
+        curl -s https://nodejs.org/en/ |\
+        grep -n "<b>v" |\
+        perl -anle "print \$1 if (\$_ =~ /\<b\>v(.*?)\<\/b\>/)"
     )
     set -e
     # スクレイピングに近いことをやってltsを取得しているので安定しないはず
