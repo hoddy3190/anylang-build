@@ -1,0 +1,14 @@
+{
+  "name": "your_project_name",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": "Hodaka Suzuki (@hoddy3190)",
+  "scripts": {
+    "lint": "eslint . && prettier . --write",
+    "test": "tsx --test"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "type": "module"
+}
