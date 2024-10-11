@@ -2,22 +2,19 @@
 
 set -euo pipefail
 
-read -p "このコンピュータでpyenv/build.shをしましたか？[y/n]: " has_build
-if [[ "${has_build}" != "y" ]]; then
+if ! which pyenv > /dev/null 2>&1; then
+  echo "[ERROR] Please install pyenv"
   exit 1
 fi
 
-set +e
-# .pkg or .tar.xz or .exe があるのでmacosxで絞る
-latest_version=$(
-    curl -s https://www.python.org/downloads/macos/ |\
-    grep -e 'Latest Python 3 Release' |\
-    perl -anle "print \$1 if (\$_ =~ /Latest Python 3 Release \- Python (.*)\<\/a\>/)"
-)
-set -e
+read -p "Do you expand the boilerplates at \"$(pwd)\"? [y/n]: "
+if [[ "${REPLY}" != "y" ]]; then
+  exit 0
+fi
 
-read -p "このプロジェクトで使用するPythonのバージョンはなんですか(default: ${latest_version})？ [x.y.z]: " input_version
-version=${input_version:-"${latest_version}"}
+cur_version=$(pyenv version-name)
+read -p "What version do you use in this project (default: ${cur_version})? [x.y.z]: " input_version
+version=${input_version:-"${cur_version}"}
 
 set +x
 pipenv --python "${version}"
