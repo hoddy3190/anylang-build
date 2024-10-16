@@ -12,6 +12,8 @@ if [[ "${REPLY}" != "y" ]]; then
   exit 0
 fi
 
+curl -L https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore -o .gitignore
+
 cur_version=$(pyenv version-name)
 read -p "What version do you use in this project (default: ${cur_version})? [x.y.z]: " input_version
 version=${input_version:-"${cur_version}"}
