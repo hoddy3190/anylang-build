@@ -13,8 +13,9 @@ case "$lang" in
     "go"   ) "$SCRIPT_DIR"/envs/"$lang"env/build.sh "$ver" ;;
     "j"    ) "$SCRIPT_DIR"/envs/"$lang"env/build.sh "$ver" ;;
     "node" ) "$SCRIPT_DIR"/envs/"$lang"nv/build.sh "$ver" ;;
-    "py"   ) "$SCRIPT_DIR"/envs/"$lang"env/build.sh "$ver" ;;
+    "py"   ) "$SCRIPT_DIR"/project_build/python/build.sh "$ver" ;;
     "rb"   ) "$SCRIPT_DIR"/envs/"$lang"env/build.sh "$ver" ;;
-    "rust" ) "$SCRIPT_DIR"/project_build/"$lang"/build.sh ;;
+    "rust" ) "$SCRIPT_DIR"/project_build/rust/build.sh ;;
+    "ts"   ) "$SCRIPT_DIR"/project_build/typescript/build.sh "$ver" ;;
     *      ) echo "$lang は対応していない言語です"; exit 1 ;;
 esac
