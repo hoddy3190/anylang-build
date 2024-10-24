@@ -14,6 +14,7 @@ fi
 
 read -p "Do you run your codes on Node.js? [y = Node.js/n = Browser]: " is_node
 
+curl -L https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore -o .gitignore
 
 BOILERPLATE_URL="https://raw.githubusercontent.com/hoddy3190/anylang-build/refs/heads/main/project_build/typescript/templates"
 curl -sSO ${BOILERPLATE_URL}/package.json
