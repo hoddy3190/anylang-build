@@ -2,8 +2,10 @@
 
 set -euo pipefail
 
+SCRIPT_DIR=$(cd $(dirname "$0"); pwd)
+
 if ! which pyenv > /dev/null 2>&1; then
-  echo "[ERROR] Please install pyenv"
+  ${SCRIPT_DIR}/pyenv.sh
   exit 1
 fi
 
