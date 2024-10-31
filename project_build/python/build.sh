@@ -13,7 +13,7 @@ read -p "What version do you use in this project(default: latest released versio
 
 if ! which pyenv > /dev/null 2>&1; then
   echo "install pyenv and pipenv"
-  ${SCRIPT_DIR}/pyenv.sh
+  ${SCRIPT_DIR}/pyenv.sh "$input_version"
 fi
 
 cur_version=$(pyenv version-name)
