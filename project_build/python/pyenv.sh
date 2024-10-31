@@ -40,7 +40,7 @@ fi
 
 echo "$version will be installed."
 
-if [[ $(pyenv root) = "$HOME/.pyenv" ]]; then
+if [[ $(pyenv root) != "$XDG_CONFIG_HOME/pyenv" ]]; then
     cat << "EOS" >> ~/.zshrc.local
 export PYENV_ROOT="$XDG_CONFIG_HOME/pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
