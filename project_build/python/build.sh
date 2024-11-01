@@ -24,7 +24,3 @@ curl -L https://raw.githubusercontent.com/github/gitignore/master/Python.gitigno
 set +x
 pipenv --python "${version}"
 set -x
-
-# flake8: linterの詰め合わせ https://zenn.dev/yamaden/articles/23d3805fc85d99#flake8
-# autopep8: formatter
-pipenv install --dev autopep8 flake8
