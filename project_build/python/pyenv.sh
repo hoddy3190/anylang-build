@@ -7,8 +7,6 @@ set -euo pipefail
 brew update
 brew install pyenv
 brew upgrade pyenv
-brew install pipenv
-brew upgrade pipenv
 
 version=${1:-''}
 
