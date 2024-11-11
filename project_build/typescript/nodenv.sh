@@ -1,7 +1,11 @@
-#!/usr/bin/env bash -eu
+#!/bin/bash
+
+set -euo pipefail
 
 # インストール可能なバージョンリストを更新
-anyenv update nodenv
+brew update
+brew install nodenv
+brew upgrade nodenv
 
 version=${1:-''}
 
@@ -28,6 +32,20 @@ if [[ -z "$version" ]]; then
 fi
 
 echo "$version will be installed."
+
+if [[ $(nodenv root) != "$XDG_CONFIG_HOME/nodenv" ]]; then
+    cat << "EOS" >> ~/.zshrc.local
+export NODENV_ROOT="$XDG_CONFIG_HOME/nodenv"
+[[ -d $NODENV_ROOT/bin ]] && export PATH="$NODENV_ROOT/bin:$PATH"
+eval "$(nodenv init -)"
+
+EOS
+    # nodenv install する前に、NODENV_ROOT を設定しておかないと、
+    # install 先が $HOME/.nodenv になってしまう
+    source ~/.zshrc.local
+fi
+
+curl -fsSL https://github.com/nodenv/nodenv-installer/raw/main/bin/nodenv-doctor | bash
 
 # nodeのインストールと一緒にnpmもついてくる
 nodenv install $version
