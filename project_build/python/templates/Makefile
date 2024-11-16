@@ -1,5 +1,6 @@
 .PHONY: venv
 venv:
+	echo "Create virtual environment using $(python -V)" && \
 	python -m venv .venv && \
 	source .venv/bin/activate && \
 	pip install --upgrade pip
