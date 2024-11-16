@@ -18,7 +18,7 @@ fi
 echo "$version will be installed."
 
 if [[ $(pyenv root) != "$XDG_CONFIG_HOME/pyenv" ]]; then
-    cat << "EOS" >> ~/.zshrc.local
+    cat <<"EOS" >>~/.zshrc.local
 export PYENV_ROOT="$XDG_CONFIG_HOME/pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
@@ -26,11 +26,11 @@ eval "$(pyenv init -)"
 EOS
     # pyenv install する前に、PYENV_ROOT を設定しておかないと、
     # install 先が $HOME/.pyenv になってしまう
-    source ~/.zshrc.local
+    ~/.zshrc.local
 fi
 
-pyenv install $version
-pyenv global $version
+pyenv install "${version}"
+pyenv global "${version}"
 pyenv rehash
 
 # install したので、$PYENV_ROOT/bin ディレクトリができる

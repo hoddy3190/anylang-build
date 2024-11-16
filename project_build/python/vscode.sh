@@ -1,3 +1,7 @@
+#!/bin/bash
+
+set -euo pipefail
+
 # https://marketplace.visualstudio.com/items?itemName=ms-python.python
 code --install-extension ms-python.python --force
 # https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance
