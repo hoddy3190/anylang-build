@@ -29,7 +29,7 @@ EOS
     ~/.zshrc.local
 fi
 
-pyenv install "${version}"
+pyenv install --skip-existing "${version}"
 pyenv global "${version}"
 pyenv rehash
 
