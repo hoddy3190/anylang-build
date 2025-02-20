@@ -12,3 +12,8 @@ anyenvを使って、言語をインストールする際の処理をまとめ�
 + Python
   - `./pyenv/build.sh` をたたく。このときpipenvも一緒にインストールされる。
   - Pythonプロジェクトを設定したいディレクトリに移動し、`pipenv --python x.y.z` をたたく。
+
+# TODO
+
+- [] template repository で作った方がいい？
+- [] Dev Container を調査する
