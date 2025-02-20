@@ -16,4 +16,5 @@ anyenvを使って、言語をインストールする際の処理をまとめ�
 # TODO
 
 - [] template repository で作った方がいい？
+  - VSCode の extension は extensions.json を入れれば良さそう
 - [] Dev Container を調査する
