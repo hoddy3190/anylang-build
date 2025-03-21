@@ -2,12 +2,20 @@
     "recommendations": [
         // https://marketplace.visualstudio.com/items?itemName=ms-python.python
         "ms-python.python",
+
         // https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance
-        "ms-python.vscode-pylance",
+        // "ms-python.vscode-pylance" is automatically installed when you install "ms-python.python"
+        // see: https://github.com/Microsoft/vscode-python?tab=readme-ov-file#installed-extensions
+        // "ms-python.vscode-pylance",
+
         // https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy
-        "ms-python.debugpy",
+        // "ms-python.debugpy" is automatically installed when you install "ms-python.python"
+        // see: https://github.com/Microsoft/vscode-python?tab=readme-ov-file#installed-extensions
+        // "ms-python.debugpy",
+
         // https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff
         "charliermarsh.ruff",
+
         // https://marketplace.visualstudio.com/items?itemName=ms-python.mypy-type-checker
         "ms-python.mypy-type-checker"
     ]
