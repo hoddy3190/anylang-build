@@ -2,16 +2,13 @@
 
 set -euo pipefail
 
-# https://marketplace.visualstudio.com/items?itemName=ms-python.python
-code --install-extension ms-python.python --force
-# https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance
-code --install-extension ms-python.vscode-pylance --force
-# https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy
-code --install-extension ms-python.debugpy --force
-# https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff
-code --install-extension charliermarsh.ruff --force
-# https://marketplace.visualstudio.com/items?itemName=ms-python.mypy-type-checker
-code --install-extension ms-python.mypy-type-checker --force
-
 mkdir -p .vscode
+# settings.json
 curl -L https://raw.githubusercontent.com/hoddy3190/anylang-build/main/project_build/python/templates/settings.json -o ./.vscode/settings.json
+
+# extensions.json
+EXTENSIONS_FILE=./.vscode/extensions.json
+curl -L https://raw.githubusercontent.com/hoddy3190/anylang-build/main/project_build/python/templates/extensions.json -o "$EXTENSIONS_FILE"
+for ext in $(jq -r '.recommendations[]' "$EXTENSIONS_FILE"); do
+    code --install-extension "$ext" --force
+done
