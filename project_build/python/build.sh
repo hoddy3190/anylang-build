@@ -24,6 +24,9 @@ curl -sL https://raw.githubusercontent.com/github/gitignore/${latest_commit_hash
 
 curl -sL https://raw.githubusercontent.com/hoddy3190/anylang-build/main/project_build/python/templates/Makefile -o Makefile
 
+mkdir -p tests
+curl -sL https://raw.githubusercontent.com/hoddy3190/anylang-build/main/project_build/python/templates/test_main.py -o ./tests/test_main.py
+
 "${SCRIPT_DIR}"/vscode.sh
 
 "${SCRIPT_DIR}"/pyenv.sh "${input_version}"
