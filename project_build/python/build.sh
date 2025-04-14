@@ -22,6 +22,8 @@ cat <<EOF > .gitignore
 EOF
 curl -sL https://raw.githubusercontent.com/github/gitignore/${latest_commit_hash}/Python.gitignore >> .gitignore
 
+curl -sL https://raw.githubusercontent.com/hoddy3190/anylang-build/main/project_build/python/templates/pyproject.toml -o pyproject.toml
+
 curl -sL https://raw.githubusercontent.com/hoddy3190/anylang-build/main/project_build/python/templates/Makefile -o Makefile
 
 mkdir -p tests
