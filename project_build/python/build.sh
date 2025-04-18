@@ -29,6 +29,9 @@ curl -sL https://raw.githubusercontent.com/hoddy3190/anylang-build/main/project_
 mkdir -p tests
 curl -sL https://raw.githubusercontent.com/hoddy3190/anylang-build/main/project_build/python/templates/test_main.py -o ./tests/test_main.py
 
+mkdir -p src
+touch src/py.typed
+
 "${SCRIPT_DIR}"/vscode.sh
 
 "${SCRIPT_DIR}"/pyenv.sh "${input_version}"

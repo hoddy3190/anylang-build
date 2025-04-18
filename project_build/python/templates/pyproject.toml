@@ -1,3 +1,4 @@
 [tool.mypy]
 # https://numpy.org/doc/stable/reference/typing.html#examples
 plugins = ["numpy.typing.mypy_plugin"]
+mypy_path = ["./src"]
